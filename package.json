@@ -1,0 +1,25 @@
+{
+    "name": "email-bot",
+    "description": "A bot for routing emails through discord.",
+    "version": "1.0.0",
+    "author": "init",
+    "license": "AGPL-3.0-only",
+    "main": "build/main.js",
+    "scripts": {
+        "setup": "npm run build && node --enable-source-maps build/setup.js",
+        "start": "npm run build && node --enable-source-maps build/main.js",
+        "build": "tsc --build",
+        "check": "biome check",
+        "fix": "biome check --write"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.3.6",
+        "@types/node": "^24"
+    },
+    "dependencies": {
+        "typescript": "^5",
+        "discord.js": "^14.25.0",
+        "dotenv": "^17.2.3",
+        "valibot": "^1.1.0"
+    }
+}
