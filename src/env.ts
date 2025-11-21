@@ -25,7 +25,8 @@ function mustParse<const TSchema extends vb.BaseSchema<unknown, unknown, vb.Base
         if (!(error instanceof vb.ValiError)) throw error;
         let message = "Configuration validation error:";
         for (const issue of error.issues as vb.BaseIssue<unknown>[]) {
-            message += `\n- [${issue.path?.[0].key}] Expected ${issue.expected} but got ${issue.received}`;
+            message += `\n- [${issue.path?.[0].key}] `;
+            message += `Expected ${issue.expected} but got ${issue.received}. `;
         }
         console.error(message);
         process.exit(1);
@@ -35,8 +36,9 @@ function mustParse<const TSchema extends vb.BaseSchema<unknown, unknown, vb.Base
 const configSchema = vb.object({
     DISCORD_TOKEN: vb.string(),
     FORUM_CHANNEL_ID: vb.string(),
+    DB_FILENAME: vb.optional(vb.string(), "database.sqlite"),
 });
 
 const parsed = mustParse(configSchema, process.env);
 
-export const { DISCORD_TOKEN, FORUM_CHANNEL_ID } = parsed;
+export const { DISCORD_TOKEN, FORUM_CHANNEL_ID, DB_FILENAME } = parsed;

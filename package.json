@@ -6,20 +6,26 @@
     "license": "AGPL-3.0-only",
     "main": "build/main.js",
     "scripts": {
-        "setup": "npm run build && node --enable-source-maps build/setup.js",
+        "sync": "npm run build && node --enable-source-maps build/sync.js",
         "start": "npm run build && node --enable-source-maps build/main.js",
         "build": "tsc --build",
-        "check": "biome check",
-        "fix": "biome check --write"
+        "migrate": "drizzle-kit migrate",
+        "migrate:gen": "drizzle-kit generate",
+        "check": "tsc && biome check",
+        "fix": "biome check --write",
+        "lint": "echo 'Linting only. Prefer `check`.' && biome check"
     },
     "devDependencies": {
         "@biomejs/biome": "2.3.6",
-        "@types/node": "^24"
+        "@types/node": "^24",
+        "drizzle-kit": "^0.31.7"
     },
     "dependencies": {
-        "typescript": "^5",
+        "@libsql/client": "^0.15.15",
         "discord.js": "^14.25.0",
         "dotenv": "^17.2.3",
+        "drizzle-orm": "^0.44.7",
+        "typescript": "^5",
         "valibot": "^1.1.0"
     }
 }

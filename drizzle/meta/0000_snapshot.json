@@ -1,0 +1,60 @@
+{
+    "version": "6",
+    "dialect": "sqlite",
+    "id": "636404cb-6eae-4ba3-a51e-5e37061d30eb",
+    "prevId": "00000000-0000-0000-0000-000000000000",
+    "tables": {
+        "email_threads": {
+            "name": "email_threads",
+            "columns": {
+                "channel_id": {
+                    "name": "channel_id",
+                    "type": "text",
+                    "primaryKey": true,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "thread_id": {
+                    "name": "thread_id",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "autoincrement": false
+                },
+                "recording_message_id": {
+                    "name": "recording_message_id",
+                    "type": "text",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "autoincrement": false
+                }
+            },
+            "indexes": {
+                "email_threads_thread_id_unique": {
+                    "name": "email_threads_thread_id_unique",
+                    "columns": ["thread_id"],
+                    "isUnique": true
+                },
+                "thread_id_idx": {
+                    "name": "thread_id_idx",
+                    "columns": ["thread_id"],
+                    "isUnique": true
+                }
+            },
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {},
+            "checkConstraints": {}
+        }
+    },
+    "views": {},
+    "enums": {},
+    "_meta": {
+        "schemas": {},
+        "tables": {},
+        "columns": {}
+    },
+    "internal": {
+        "indexes": {}
+    }
+}
